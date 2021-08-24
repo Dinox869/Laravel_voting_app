@@ -25,7 +25,7 @@ class CreateIdea extends Component
         if(auth()->check()){
             $this->validate();
 
-            Idea::create(
+           $idea = Idea::create(
                 [
                     'user_id'=> auth()->id(),
                     'category_id'=>$this->category,
@@ -34,6 +34,7 @@ class CreateIdea extends Component
                     'description'=> $this->description
                 ]
             );
+           $idea->vote(auth()->user());
 
             session()->flash('success_message','Idea was added successfully');
 

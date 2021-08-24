@@ -1,6 +1,6 @@
 <x-app-layout>
     <div>
-        <a href="#" class="font-semibold hover:underline flex items-center">
+        <a href="{{ url()->previous() }}" class="font-semibold hover:underline flex items-center">
             <svg class="h-4 w-4 " fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
             </svg>
@@ -9,6 +9,8 @@
     </div>
 
     <livewire:idea-show :idea="$idea" :votesCount="$votesCount"/>
+
+    <livewire:edit-idea :idea="$idea"/>
 
     <div class="comments-container mt-1 pt-6 relative space-y-6 md:ml-22 my-8">
         <div class="comment-container relative bg-white rounded-xl mt-4 flex">

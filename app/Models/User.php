@@ -53,8 +53,12 @@ class User extends Authenticatable
 
     public function getAvatar(){
 
-//        return 'https://source.unsplash.com/200x200/?face&crop=face&v=1';
+        return 'https://source.unsplash.com/200x200/?face&crop=face&v=1';
+//        return 'https://www.gravatar.com/avatar/'.md5($this->email).'?d=mp';
+    }
 
-        return 'https://www.gravatar.com/avatar/'.md5($this->email).'?d=mp';
+    public function isAdmin()
+    {
+        return in_array($this->email,['Jamesdennis869@gmail.com']);
     }
 }

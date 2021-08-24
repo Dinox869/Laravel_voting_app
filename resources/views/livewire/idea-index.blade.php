@@ -61,16 +61,6 @@
                 <div x-data="{ isOpen: false }"
                      class="flex items-center mt-2 md:mt-0 space-x-2">
                     <div class="{{$idea->status->classes}} rounded-full text-xxs font-bold uppercase leading-none bg-gray-200 text-center w-28 h-7 px-4 py-2">{{$idea->status->name}}</div>
-                    <button @click="isOpen = !isOpen"
-                            class="bg-gray-100 relative px-3 border hover:bg-gray-200 rounded-full transition duration-150 ease-in">
-                        <svg  class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
-                        </svg>
-                        <ul x-cloak @keydown.escape.window="isOpen = false" x-show.transition.origin.top.left.duration.500ms="isOpen" @click.away="isOpen = false" class="w-44 absolute text-left md:ml-9 top-8 md:top-6 right-0 md:left-0 font-semibold bg-white shadow-dialog rounded-xl py-3">
-                            <li><a href="#" class="px-5 py-3 transition duration-150 ease-in hover:bg-gray-100 block">Mark as Spam</a></li>
-                            <li><a href="#" class="px-5 py-3 transition duration-150 ease-in hover:bg-gray-100 block">Delete Post</a></li>
-                        </ul>
-                    </button>
                 </div>
                 <div class="mt-4 md:mt-0 md:hidden flex items-center">
                     <div class="bg-gray-100 text-center rounded-xl h-10 px-4 py-2 pr-8">

@@ -19,11 +19,23 @@ class IdeasIndex extends Component
 
     public $filter;
 
+    public $search;
+
     protected $listeners=['queryStringUpdateStatus'];
 
-    protected $queryString = ['status','category','filter'];
+    protected $queryString = ['status','category','search','filter'];
 
     public function updatingCategory()
+    {
+        $this->resetPage();
+    }
+
+    public function updatingFilter()
+    {
+        $this->resetPage();
+    }
+
+    public function updatingSearch()
     {
         $this->resetPage();
     }
@@ -36,7 +48,7 @@ class IdeasIndex extends Component
         $this->status = $newStatus;
     }
 
-    public function updatingFilter()
+    public function updatedFilter()
     {
         if($this->filter === 'Your Ideas'){
             if(!auth()->check())
@@ -65,6 +77,9 @@ class IdeasIndex extends Component
                 })
                 ->when( $this->filter && $this->filter === 'Your Ideas', function ($query){
                     return $query->where('user_id',auth()->id());
+                })
+                ->when( strlen($this->search) >= 3, function ($query){
+                    return $query->where('title','like','%'.$this->search.'%');
                 })
                 ->addSelect(['voted_by_user'=> Vote::select('id')->where('user_id',auth()->id())->where('idea_id','ideas.id')])
                 ->withCount('votes')
