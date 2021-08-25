@@ -3,11 +3,13 @@
 namespace Database\Seeders;
 
 use App\Models\Category;
+use App\Models\Comments;
 use App\Models\Idea;
 use App\Models\Status;
 use App\Models\User;
 use App\Models\Vote;
 use Illuminate\Database\Seeder;
+use PhpParser\Comment;
 
 class DatabaseSeeder extends Seeder
 {
@@ -46,5 +48,7 @@ class DatabaseSeeder extends Seeder
                 }
             }
         }
+
+        Comments::factory(10)->create();
     }
 }

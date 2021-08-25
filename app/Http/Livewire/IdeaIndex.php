@@ -32,7 +32,8 @@ class IdeaIndex extends Component
         {
             return redirect(route('login'));
         }
-       elseif($this->hasVoted){
+       elseif($this->hasVoted)
+       {
             try
             {
 
@@ -42,8 +43,8 @@ class IdeaIndex extends Component
             $this->idea->voteRemoved(auth()->user());
             $this->votesCount--;
             $this->hasVoted = false;
-
-        }else{
+        }
+        else{
             try{}catch (DuplicateVoteException $e){
                 //do nothing
             }

@@ -57,6 +57,11 @@ class User extends Authenticatable
 //        return 'https://www.gravatar.com/avatar/'.md5($this->email).'?d=mp';
     }
 
+    public function comments()
+    {
+        return $this->hasMany(Comments::class);
+    }
+
     public function isAdmin()
     {
         return in_array($this->email,['Jamesdennis869@gmail.com']);
